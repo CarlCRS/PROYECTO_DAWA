@@ -1,0 +1,5 @@
+/* El fondo y los colores base se definen en src/styles.css */
+:host {
+  display: block;
+  min-height: 100vh;
+}

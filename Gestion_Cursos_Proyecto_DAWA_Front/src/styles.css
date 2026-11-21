@@ -1,1 +1,15 @@
-/* You can add global styles to this file, and also import other style files */
+/* Tema global: negros, grises y fondo blanco pastel */
+:root {
+  --bs-body-bg: #f7f7f5;
+  --bs-body-color: #1a1a1a;
+  --bs-border-color: #dcdcdc;
+  --bs-secondary-color: #6b6b6b;
+  --bs-link-color: #111111;
+  --bs-link-hover-color: #333333;
+}
+
+html,
+body {
+  background-color: var(--bs-body-bg);
+  color: var(--bs-body-color);
+}
