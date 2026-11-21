@@ -1,0 +1,6 @@
+@Gestion_Cursos_Proyecto_DAWA_HostAddress = http://localhost:5030
+
+GET {{Gestion_Cursos_Proyecto_DAWA_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
