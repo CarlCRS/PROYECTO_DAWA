@@ -4,6 +4,7 @@ namespace Gestion_Cursos_Proyecto_DAWA.Service
 {
     public class CursosServices
     {
+
         private static readonly List<Curso> _cursos = new List<Curso>
         {
             new Curso { Id = 1, 
