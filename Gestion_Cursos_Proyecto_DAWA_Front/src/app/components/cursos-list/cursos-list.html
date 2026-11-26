@@ -1,0 +1,20 @@
+<div class="card shadow-sm">
+  <div class="card-body p-4">
+    <div class="curso-item border rounded p-3 mb-3 bg-light" *ngFor="let curso of cursos">
+      <h4 class="h6 fw-bold mb-2">{{ curso.nombre }}</h4>
+      <p class="mb-1 text-secondary">ID: {{ curso.id }}</p>
+      <p class="mb-1 text-secondary">{{ curso.docente }}</p>
+
+      <p class="mb-2">
+        Estado:
+        <span class="badge" [ngClass]="curso.activo ? 'bg-dark' : 'bg-secondary'">
+          {{ curso.activo ? 'Activo' : 'Inactivo' }}
+        </span>
+      </p>
+
+      <button class="btn btn-outline-dark btn-sm" (click)="cambiarEstado(curso)">
+        Cambiar estado
+      </button>
+    </div>
+  </div>
+</div>
