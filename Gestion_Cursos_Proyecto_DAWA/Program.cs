@@ -10,8 +10,6 @@ builder.Services.AddScoped<CursosServices>();
 
 builder.Services.AddSwaggerGen();
 
-var app = builder.Build();
-
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ConsumoAngular", policy =>
@@ -21,6 +19,9 @@ builder.Services.AddCors(options =>
               .AllowAnyHeader();
     });
 });
+
+var app = builder.Build();
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
@@ -29,8 +30,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
 }
 
-app.UseAuthorization();
 app.UseCors("ConsumoAngular");
+app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
