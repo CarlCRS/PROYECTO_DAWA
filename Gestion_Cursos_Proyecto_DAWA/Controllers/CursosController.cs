@@ -26,7 +26,7 @@ namespace Gestion_Cursos_Proyecto_DAWA.Controllers
         [HttpGet("{id}")]
         public IActionResult GetById(int id)
         {
-            var curso = _cursosServices.GetCursos().FirstOrDefault(c => c.Id == id);
+            var curso = _cursosServices.GetCursoById(id);
 
             if (curso == null)
             {
@@ -41,24 +41,20 @@ namespace Gestion_Cursos_Proyecto_DAWA.Controllers
         [HttpPost]
         public IActionResult Post_Curso([FromBody] Curso curso)
         {
-            curso.Id = _cursosServices.GetCursos().Count + 1; //Count cuenta desde 1
-            _cursosServices.GetCursos().Add(curso);
-            return Created("", curso);
+            var nuevoCurso = _cursosServices.AgregarCurso(curso);
+            return Created("", nuevoCurso);
         }
 
         // Put api/<CursosController>/5 Para actualizar un curso existente
         [HttpPut("{id}")]
         public IActionResult Put_Curso(int id, [FromBody] Curso curso_actualizado)
         {
-            var curso = _cursosServices.GetCursos().FirstOrDefault(c => c.Id == id);
+            var curso = _cursosServices.ActualizarCurso(id, curso_actualizado);
             if (curso == null)
             {
                 return NotFound();
             }
 
-            curso.Nombre = curso_actualizado.Nombre;
-            curso.Docente = curso_actualizado.Docente;
-            curso.Activo = curso_actualizado.Activo;
             return Ok(curso);
         }
 
@@ -66,12 +62,11 @@ namespace Gestion_Cursos_Proyecto_DAWA.Controllers
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
-            var cursoExistente = _cursosServices.GetCursos().FirstOrDefault(c => c.Id == id);
-            if (cursoExistente == null)
+            var resultado = _cursosServices.EliminarCurso(id);
+            if (!resultado)
             {
                 return NotFound();
             }
-            _cursosServices.GetCursos().Remove(cursoExistente);
             return Ok("Curso eliminado exitosamente");
         }
 
